@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8" />
+  <title>game</title>
+  <style>
+    button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <button    onclick="game()">start</button>
+  <script>
+
+
+    
+
+    
+
+      const vocab = [
+        {
+          word: 'Internet',
+          correctNum: 2,
+          choices: ['A connected group of computers', 'A global network of computers that communicate with each other.', 'Wires that connect devices', 'Cables and satellites that allow communication']
+        },
+        {
+          word: 'Packets',
+          correctNum: 3,
+          choices: ['Suitcases for carrying data', 'Large bundles of data', 'Small chunks of data that are transmitted over the internet', 'Containers for organizing information']
+
+
+        },
+        // Rest of words
+
+      ];
+
+      let score = 0;
+
+      // Code for game loop
+
+      function getChoices(word) {
+        let choices = [...word.choices];
+        return choices;
+      }
+      
+      
+      
+      let qNum = 0; 
+      function game() {
+        let word = vocab[qNum];
+        let choices = getChoices(word);
+        let i = 1;
+        let txt = "";
+        choices.forEach(hi = (value,i) =>    txt += `${i+1}. ` + value + "\n", i++ )
+        const userAnswer = prompt(
+          `${qNum+1}. What is the definition of ` + word.word + '?' + '\n\n' + txt
+        );
+
+
+        
+        
+
+        if (userAnswer == word.correctNum) {
+          score++;
+
+
+          if(confirm("Correct! Next quection?")) {
+            qNum++;
+            game();
+
+          } else {
+            end();
+          }
+
+          
+
+        } else if(confirm("Incorrect. Try again?")) {
+
+          game();
+
+        } else {
+          end();
+        }
+
+
+
+        function end() {
+          qNum = 0;
+          alert(`Game over! Score: ${score}`);
+          // Check answer and update score
+
+          // Rest of game loop
+        }
+
+      }
+    
+
+  </script>
+</body>
+
+</html>
