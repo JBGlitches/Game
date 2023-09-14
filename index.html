@@ -31,17 +31,17 @@
       const vocab = [
         {
           word: 'Internet',
-          correctNum: 2,
+          definition: 'A global network of computers that communicate with each other.',
           choices: ['A connected group of computers', 'A global network of computers that communicate with each other.', 'Wires that connect devices', 'Cables and satellites that allow communication']
         },
         {
           word: 'Packets',
-          correctNum: 3,
+          definition: 'Small chunks of data that are transmitted over the internet',
           choices: ['Suitcases for carrying data', 'Large bundles of data', 'Small chunks of data that are transmitted over the internet', 'Containers for organizing information']
 
 
         },
-        // Rest of words
+        
 
       ];
 
@@ -50,16 +50,16 @@
       // Code for game loop
 
       function getChoices(word) {
-        let choices = [...word.choices];
+        var choices = [...word.choices];
         return choices;
       }
       
       
-      
+      let qIndex = Math.floor(Math.random() * vocab.length); 
       let qNum = 0; 
       function game() {
-        let word = vocab[qNum];
-        let choices = getChoices(word);
+        let word = vocab[qIndex];
+        var choices = getChoices(word);
         let i = 1;
         let txt = "";
         choices.forEach(hi = (value,i) =>    txt += `${i+1}. ` + value + "\n", i++ )
@@ -71,13 +71,20 @@
         
         
 
-        if (userAnswer == word.correctNum) {
+        if (choices[userAnswer-1] == word.definition) {
           score++;
 
 
           if(confirm("Correct! Next quection?")) {
-            qNum++;
+            
+            if (qNum == 9) {
+              alert("You Win! Please play again.");
+              end();
+            } else {
+              
             game();
+            qNum++;
+            }
 
           } else {
             end();
