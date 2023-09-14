@@ -179,24 +179,26 @@
         
 
         if (choices[userAnswer-1] == word.definition) {
-          score++;
-
-
-          if(confirm("Correct! Next quection?")) {
-            
-            if (qNum > 8) {
+          score++;  
+          if (qNum > 8) {
               alert("You Win! Please play again.");
               end();
             } else {
+            if(confirm("Correct! Next quection?")) {
             qIndex = Math.floor(Math.random() * vocab.length);
             qNum++;
             game();
             
-            }
 
           } else {
             end();
           }
+            
+            
+            }
+
+
+          
 
           
 
