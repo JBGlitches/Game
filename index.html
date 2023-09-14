@@ -175,7 +175,7 @@
         }
         let x = 1;
         let txt = "";
-        choices.forEach(hi = (value,x) =>    txt += `${i+1}. ` + value + "\n", i++ )
+        choices.forEach(hi = (value,x) =>    txt += `${x+1}. ` + value + "\n", x++ )
         const userAnswer = prompt(
           `${qNum+1}. What is the definition of ` + word.word + '?' + '\n\n' + txt
         );
