@@ -161,10 +161,10 @@
       }
       
       
-     
+      let qIndex = Math.floor(Math.random() * vocab.length); 
       let qNum = 0; 
       function game() {
-        let qIndex = Math.floor(Math.random() * vocab.length); 
+        
         let word = vocab[qIndex];
         var choices = getChoices(word);
         let i = 1;
@@ -188,7 +188,7 @@
               alert("You Win! Please play again.");
               end();
             } else {
-              
+            qIndex = Math.floor(Math.random() * vocab.length);
             game();
             qNum++;
             }
